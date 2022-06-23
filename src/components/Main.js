@@ -31,7 +31,7 @@ function Main(props) {
     .catch((err) => {
       console.log(err);
     })
-  })
+  }, [])
 
   return (
     <main>
@@ -55,7 +55,7 @@ function Main(props) {
       <section className="elements">
         {cards.map((card) => (
           <Card 
-          key={card.id}
+          key={card._id}
           name={card.name}
           link={card.link}
           likes={card.likes}
