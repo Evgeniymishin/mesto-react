@@ -1,20 +1,20 @@
-import React from 'react';
-import PopupWithForm from './PopupWithForm';
+import React from "react";
+import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup(props) {
+function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const nameRef = React.useRef();
   const linkRef = React.useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    props.onAddPlace({
-        name: nameRef.current.value,
-        link: linkRef.current.value
+    onAddPlace({
+      name: nameRef.current.value,
+      link: linkRef.current.value,
     });
 
-    nameRef.current.value = '';
-    linkRef.current.value = '';
+    nameRef.current.value = "";
+    linkRef.current.value = "";
   }
 
   return (
@@ -22,9 +22,10 @@ function AddPlacePopup(props) {
       name="add"
       title="Новое место"
       buttonText="Добавить"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
-      onSubmit = {handleSubmit}>
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
       <label className="popup__control">
         <input
           className="popup__input popup__input_type_title"
@@ -50,7 +51,7 @@ function AddPlacePopup(props) {
         <span className="popup__error" />
       </label>
     </PopupWithForm>
-  )
+  );
 }
 
 export default AddPlacePopup;
